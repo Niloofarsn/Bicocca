@@ -1,0 +1,33 @@
+---
+layout: base.njk
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "/{{ locale }}/participants/index.html"
+pageKey: participants
+---
+<section class="section">
+  <div class="wrap">
+    <h1 class="page-title">{{ i18n.participants.title | loc(locale) }}</h1>
+    <p class="lede">{{ i18n.participants.intro | loc(locale) }}</p>
+
+    {% if collections.participants | length %}
+      <ul class="people">
+        {% for p in collections.participants %}
+          <li class="person">
+            <div class="person-name">
+              {% if p.data.url %}<a href="{{ p.data.url }}">{{ p.data.name }}</a>{% else %}{{ p.data.name }}{% endif %}
+            </div>
+            {% if p.data.affiliation %}<div class="person-aff muted">{{ p.data.affiliation }}</div>{% endif %}
+            {% if p.data.role %}
+              <span class="tag tag-{{ p.data.role }}">{{ i18n.participants.roles[p.data.role] | loc(locale) }}</span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="placeholder">{{ i18n.participants.empty | loc(locale) }}</p>
+    {% endif %}
+  </div>
+</section>

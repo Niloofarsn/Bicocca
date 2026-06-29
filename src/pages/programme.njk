@@ -1,0 +1,66 @@
+---
+layout: base.njk
+pagination:
+  data: locales
+  size: 1
+  alias: locale
+permalink: "/{{ locale }}/programme/index.html"
+pageKey: programme
+---
+<section class="section">
+  <div class="wrap">
+    <h1 class="page-title">{{ i18n.programme.title | loc(locale) }}</h1>
+    <p class="lede">{{ i18n.programme.intro | loc(locale) }}</p>
+
+    {% set days = [1, 2, 3] %}
+    {% for d in days %}
+      {% set sessions = collections.programme | where("data.day", d) %}
+      <div class="day-block">
+        <h2 class="day-heading">
+          {{ i18n.programme.day | loc(locale) }} {{ d }}
+          {% if sessions | length and sessions[0].data.dateLabel %}<span class="day-date">· {{ sessions[0].data.dateLabel }}</span>{% endif %}
+        </h2>
+
+        {% if sessions | length %}
+          <table class="schedule">
+            <tbody>
+              {% for s in sessions %}
+                <tr class="row-{{ s.data.type or 'talk' }}">
+                  <td class="col-time">{{ s.data.start }}{% if s.data.end %}–{{ s.data.end }}{% endif %}</td>
+                  <td class="col-talk">
+                    {% set tt = s.data["title_" + locale] or s.data.title_en %}
+                    <span class="talk-title">{{ tt or (i18n.programme.tba | loc(locale)) }}</span>
+                    {% if s.data.speaker %}
+                      <span class="talk-speaker">{{ s.data.speaker }}{% if s.data.affiliation %} · <span class="muted">{{ s.data.affiliation }}</span>{% endif %}</span>
+                    {% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="muted">{{ i18n.programme.tba | loc(locale) }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section-alt" id="abstracts">
+  <div class="wrap">
+    <h2 class="section-title">{{ i18n.programme.abstracts | loc(locale) }}</h2>
+    {% if collections.abstracts | length %}
+      <div class="abstracts">
+        {% for a in collections.abstracts %}
+          <article class="abstract">
+            <h3 class="abstract-title">{{ a.data["title_" + locale] or a.data.title_en }}</h3>
+            {% if a.data.speaker %}<p class="abstract-speaker">{{ a.data.speaker }}{% if a.data.affiliation %} · <span class="muted">{{ a.data.affiliation }}</span>{% endif %}</p>{% endif %}
+            <div class="prose">{{ (a.data["abstract_" + locale] or a.data.abstract_en) | md | safe }}</div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="placeholder">{{ i18n.programme.abstractsPlaceholder | loc(locale) }}</p>
+    {% endif %}
+  </div>
+</section>

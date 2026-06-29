@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": { "en": "Home", "it": "Home" },
+    "programme": { "en": "Programme", "it": "Programma" },
+    "participants": { "en": "Participants", "it": "Partecipanti" },
+    "venue": { "en": "Venue & Info", "it": "Sede e Info" }
+  },
+  "home": {
+    "about": { "en": "About the workshop", "it": "Il workshop" },
+    "organizers": { "en": "Organizers", "it": "Organizzatori" },
+    "contact": { "en": "Contact", "it": "Contatti" }
+  },
+  "programme": {
+    "title": { "en": "Programme", "it": "Programma" },
+    "intro": {
+      "en": "The three-day programme is below. Times and talks may still change.",
+      "it": "Di seguito il programma dei tre giorni. Orari e seminari potrebbero subire variazioni."
+    },
+    "day": { "en": "Day", "it": "Giorno" },
+    "abstracts": { "en": "Abstracts", "it": "Abstract" },
+    "abstractsPlaceholder": {
+      "en": "Abstracts will be added here soon.",
+      "it": "Gli abstract saranno aggiunti qui a breve."
+    },
+    "tba": { "en": "To be announced", "it": "Da annunciare" }
+  },
+  "participants": {
+    "title": { "en": "Participants", "it": "Partecipanti" },
+    "intro": {
+      "en": "The list of participants will be updated as registrations are confirmed.",
+      "it": "L'elenco dei partecipanti sarà aggiornato man mano che le iscrizioni vengono confermate."
+    },
+    "roles": {
+      "speaker": { "en": "Speaker", "it": "Relatore" },
+      "organizer": { "en": "Organizer", "it": "Organizzatore" },
+      "participant": { "en": "Participant", "it": "Partecipante" }
+    },
+    "empty": {
+      "en": "Participants will be listed here soon.",
+      "it": "I partecipanti saranno elencati qui a breve."
+    }
+  },
+  "venue": {
+    "title": { "en": "Venue & Practical Information", "it": "Sede e Informazioni Pratiche" },
+    "where": { "en": "Where", "it": "Dove" },
+    "gettingThere": { "en": "Getting there", "it": "Come arrivare" },
+    "practical": { "en": "Practical information", "it": "Informazioni pratiche" },
+    "openMap": { "en": "Open in map", "it": "Apri nella mappa" },
+    "empty": {
+      "en": "Practical information will be added here soon.",
+      "it": "Le informazioni pratiche saranno aggiunte qui a breve."
+    },
+    "categories": {
+      "hotel": { "en": "Accommodation", "it": "Alloggio" },
+      "dinner": { "en": "Dinners & food", "it": "Cene e ristoranti" },
+      "transport": { "en": "Transport", "it": "Trasporti" },
+      "other": { "en": "Other", "it": "Altro" }
+    }
+  },
+  "footer": {
+    "rights": {
+      "en": "Workshop in Harmonic Analysis — University of Milano-Bicocca",
+      "it": "Workshop in Analisi Armonica — Università di Milano-Bicocca"
+    }
+  }
+}

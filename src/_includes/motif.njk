@@ -1,0 +1,19 @@
+{# Minimal, original Bicocca-denim motif: stacked arches evoking the campus
+   colonnades. Replace by uploading the real poster in the admin panel. #}
+<svg class="motif" viewBox="0 0 400 480" role="img"
+     aria-label="{{ site.shortTitle }}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="480" rx="10" fill="var(--bicocca-deep)" />
+  <g fill="none" stroke="var(--bicocca-light)" stroke-width="1.5" opacity="0.65">
+    {% for i in range(0, 5) %}
+      <path d="M{{ 40 + i*64 }} 420 V200 a26 26 0 0 1 52 0 V420"
+            transform="translate(-26 0)" />
+    {% endfor %}
+  </g>
+  <g fill="var(--bicocca-light)" opacity="0.9">
+    <circle cx="200" cy="120" r="6" />
+  </g>
+  <line x1="40" y1="420" x2="360" y2="420" stroke="var(--bicocca-light)" stroke-width="2" />
+  <text x="200" y="458" text-anchor="middle"
+        font-family="Fraunces, serif" font-size="15" fill="var(--bicocca-light)"
+        letter-spacing="2">MILANO · BICOCCA</text>
+</svg>
