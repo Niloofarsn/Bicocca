@@ -46,6 +46,7 @@
           <a href="{{ base }}programme/"{% if pageKey == "programme" %} aria-current="page"{% endif %}>{{ i18n.nav.programme | loc(locale) }}</a>
           <a href="{{ base }}participants/"{% if pageKey == "participants" %} aria-current="page"{% endif %}>{{ i18n.nav.participants | loc(locale) }}</a>
           <a href="{{ base }}venue/"{% if pageKey == "venue" %} aria-current="page"{% endif %}>{{ i18n.nav.venue | loc(locale) }}</a>
+          <a class="nav-admin" href="/admin/">{{ "Admin" if locale == "en" else "Amministrazione" }}</a>
         </nav>
 
         <a class="lang-toggle" href="{{ otherBase }}{{ sub }}" hreflang="{{ otherLocale }}">

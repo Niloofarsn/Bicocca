@@ -89,6 +89,82 @@ collections:
           - { label: "Getting there (English)", name: "gettingThere_en", widget: "markdown" }
           - { label: "Getting there (Italian)", name: "gettingThere_it", widget: "markdown" }
 
+      - name: "labels"
+        label: "Page texts & labels"
+        file: "src/_data/i18n.json"
+        description: "All page titles, intros and section headings (English / Italian)."
+        fields:
+          - label: "Navigation"
+            name: "nav"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Home", name: "home", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Programme", name: "programme", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Participants", name: "participants", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Venue", name: "venue", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+          - label: "Home page"
+            name: "home"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "About heading", name: "about", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Organizers heading", name: "organizers", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Contact heading", name: "contact", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+          - label: "Programme page"
+            name: "programme"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Intro", name: "intro", widget: "object", fields: [{ label: English, name: en, widget: text }, { label: Italian, name: it, widget: text }] }
+              - { label: "“Day” word", name: "day", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Abstracts heading", name: "abstracts", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Abstracts placeholder", name: "abstractsPlaceholder", widget: "object", fields: [{ label: English, name: en, widget: text }, { label: Italian, name: it, widget: text }] }
+              - { label: "“To be announced”", name: "tba", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+          - label: "Participants page"
+            name: "participants"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Intro", name: "intro", widget: "object", fields: [{ label: English, name: en, widget: text }, { label: Italian, name: it, widget: text }] }
+              - { label: "Empty message", name: "empty", widget: "object", fields: [{ label: English, name: en, widget: text }, { label: Italian, name: it, widget: text }] }
+              - label: "Role labels"
+                name: "roles"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Speaker", name: "speaker", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+                  - { label: "Organizer", name: "organizer", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+                  - { label: "Participant", name: "participant", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+          - label: "Venue page"
+            name: "venue"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Title", name: "title", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "“Where” heading", name: "where", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "“Getting there” heading", name: "gettingThere", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "“Practical information” heading", name: "practical", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "“Open in map” link", name: "openMap", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+              - { label: "Empty message", name: "empty", widget: "object", fields: [{ label: English, name: en, widget: text }, { label: Italian, name: it, widget: text }] }
+              - label: "Category headings"
+                name: "categories"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Accommodation", name: "hotel", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+                  - { label: "Dinners & food", name: "dinner", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+                  - { label: "Transport", name: "transport", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+                  - { label: "Other", name: "other", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Footer title", name: "rights", widget: "object", fields: [{ label: English, name: en, widget: string }, { label: Italian, name: it, widget: string }] }
+
   # ---------- Programme (one entry per session) ----------
   - name: "programme"
     label: "Programme"
