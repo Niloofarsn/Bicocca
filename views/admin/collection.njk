@@ -1,0 +1,23 @@
+{% extends "admin/adminlayout.njk" %}
+{% block content %}
+<div class="admin-page">
+  <p class="crumb"><a href="/admin">← Dashboard</a></p>
+  <div class="admin-head-row">
+    <h1 class="admin-h1">{{ def.label }}</h1>
+    <a class="btn" href="/admin/c/{{ def.key }}/new">+ New {{ def.singular }}</a>
+  </div>
+
+  {% if items.length %}
+    <ul class="admin-list">
+      {% for it in items %}
+        <li class="admin-list-item">
+          <span class="ali-summary">{{ it.summary }}</span>
+          <a class="ali-edit" href="/admin/c/{{ def.key }}/{{ it.id }}">Edit →</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="placeholder">No {{ def.label | lower }} yet. Use “+ New {{ def.singular }}”.</p>
+  {% endif %}
+</div>
+{% endblock %}

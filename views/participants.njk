@@ -1,0 +1,22 @@
+{% extends "layout.njk" %}
+{% block content %}
+<section class="section">
+  <div class="wrap">
+    <h1 class="page-title">{{ L.participants.title | loc(locale) }}</h1>
+    <p class="lede">{{ L.participants.intro | loc(locale) }}</p>
+    {% if people.length %}
+      <ul class="people">
+        {% for p in people %}
+          <li class="person">
+            <div class="person-name">{% if p.url %}<a href="{{ p.url }}">{{ p.name }}</a>{% else %}{{ p.name }}{% endif %}</div>
+            {% if p.affiliation %}<div class="person-aff muted">{{ p.affiliation }}</div>{% endif %}
+            {% if p.role %}<span class="tag tag-{{ p.role }}">{{ L.participants.roles[p.role] | loc(locale) }}</span>{% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="placeholder">{{ L.participants.empty | loc(locale) }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

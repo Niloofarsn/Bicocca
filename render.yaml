@@ -1,0 +1,29 @@
+# Render Blueprint — deploys the workshop site with a persistent disk so admin
+# edits and uploaded photos survive restarts and redeploys.
+#
+# NOTE: a persistent disk requires Render's paid "Starter" instance (~$7/month).
+# Without a disk, edits would be lost on restart.
+services:
+  - type: web
+    name: harmonic-analysis-bicocca
+    runtime: node
+    plan: starter
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /en/
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_PASSWORD
+        sync: false          # you set this in the Render dashboard (keep it private)
+      - key: SESSION_SECRET
+        generateValue: true  # Render generates a strong random value
+      - key: DATA_FILE
+        value: /data/content.json
+      - key: UPLOAD_DIR
+        value: /data/uploads
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1

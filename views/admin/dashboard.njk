@@ -1,0 +1,27 @@
+{% extends "admin/adminlayout.njk" %}
+{% block content %}
+<div class="admin-page">
+  <h1 class="admin-h1">Edit the website</h1>
+  <p class="muted">Changes are saved instantly and shown on the live site.</p>
+
+  <h2 class="admin-h2">Pages & settings</h2>
+  <div class="tile-grid">
+    {% for s in singletons %}
+      <a class="tile" href="/admin/edit/{{ s.key }}">
+        <span class="tile-title">{{ s.label }}</span>
+        <span class="tile-go">Edit →</span>
+      </a>
+    {% endfor %}
+  </div>
+
+  <h2 class="admin-h2">Lists</h2>
+  <div class="tile-grid">
+    {% for c in collections %}
+      <a class="tile" href="/admin/c/{{ c.key }}">
+        <span class="tile-title">{{ c.label }}</span>
+        <span class="tile-go">Manage →</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,69 +1,93 @@
 # Workshop in Harmonic Analysis — University of Milano-Bicocca
 
-Bilingual (English / Italian) website for the workshop, built as a static site with
-[Eleventy](https://www.11ty.dev/) and an admin panel powered by
-[Decap CMS](https://decapcms.org/) (the maintained successor to Netlify CMS).
+A small **self-hosted** bilingual (English / Italian) website with a built-in,
+password-protected **admin panel**. No Netlify, no GitHub, no external CMS — it's a
+single Node.js (Express) app that renders the pages and lets you edit everything live.
 
 ## Pages
 
 - **Home** — poster, dates, brief description, organizers, contact, Bicocca-styled hero.
-- **Programme** — three-day schedule (editable) + an **Abstracts** section (placeholder now).
-- **Participants** — list of speakers / organizers / participants.
+- **Programme** — three-day schedule + an **Abstracts** section (placeholder until you add any).
+- **Participants** — speakers / organizers / participants.
 - **Venue & Info** — venue + map, getting there, and practical items (hotels, dinners, transport).
 
-Everything visible on the site is editable from the admin panel at `/admin`.
+Click **Admin** in the top navigation (or go to `/admin`) to edit any of it.
 
-## Run locally
+## Run it
 
 ```bash
 npm install
-npm start            # serves the site at http://localhost:8080
+npm start
 ```
 
-### Edit content locally (no account needed)
+Then open:
+- Site:  http://localhost:3000/
+- Admin: http://localhost:3000/admin
 
-In a second terminal:
+**Default admin password:** `1994` → change it (see below).
+
+Editing in the admin saves instantly to `data/content.json` and shows on the site immediately —
+no rebuild, no redeploy. Uploaded images go to `public/uploads/`.
+
+## Configuration (environment variables)
+
+| Variable | Purpose | Default |
+|----------|---------|---------|
+| `ADMIN_PASSWORD` | The single admin login password | `1994` |
+| `SESSION_SECRET` | Secret used to sign the login session cookie | `change-me-please` |
+| `PORT` | Port to listen on | `3000` |
+
+Example:
 
 ```bash
-npm run cms          # starts the Decap local backend
+ADMIN_PASSWORD='choose-a-strong-one' SESSION_SECRET='some-long-random-string' npm start
 ```
 
-Then open <http://localhost:8080/admin/>. Because `local_backend: true` is set in
-`src/admin/config.yml`, edits are written straight to the files in `src/` — refresh the
-site to see them. (No login is required in local mode.)
+## Deploy (any host that runs Node)
 
-## Deploy on Netlify (with the live admin panel)
+Because this is a normal Node server, it runs on a university server or any Node host
+(Render, Railway, Fly.io, a VPS, etc.). General steps:
 
-1. Push this folder to a GitHub repository.
-2. In Netlify: **Add new site → Import from Git**, pick the repo. Build settings are read
-   from `netlify.toml` (build `npm run build`, publish `_site`).
-3. Enable **Identity**: *Site settings → Identity → Enable Identity*.
-4. Under Identity → **Registration**, set it to **Invite only**.
-5. Enable **Git Gateway**: *Identity → Services → Enable Git Gateway*.
-6. **Invite yourself**: Identity → *Invite users* → enter the organizer email. Accept the
-   email invite, set a password — that single login is your admin access.
-7. Log in at `https://<your-site>/admin/`, edit content, and Save/Publish. Each change
-   commits to GitHub and Netlify rebuilds automatically.
+1. Copy the project to the server (or connect the host to a git repo if you have one).
+2. Set the env vars above — **always set a real `ADMIN_PASSWORD` and `SESSION_SECRET`** in production.
+3. `npm install --omit=dev` then `npm start` (ideally under a process manager like `pm2`,
+   or the platform's own "Web Service" start command `node server.js`).
+4. Put it behind HTTPS (the host usually provides this automatically).
 
-> If your default branch is not `main`, update `backend.branch` in `src/admin/config.yml`.
+### Example: Render
+- New → **Web Service** → point it at the code.
+- Build command: `npm install`   ·   Start command: `node server.js`
+- Add environment variables `ADMIN_PASSWORD` and `SESSION_SECRET`.
 
-## Content structure
+> **Persistence note:** content lives in `data/content.json` and uploads in `public/uploads/`.
+> On hosts with an *ephemeral* filesystem (e.g. Render's free tier resets on redeploy),
+> attach a **persistent disk** mounted at the project folder (or at least at `data/` and
+> `public/uploads/`) so edits survive restarts. On a university server or VPS this is automatic.
 
-| What | Where | Edited as |
-|------|-------|-----------|
-| Title, dates, organizers, contact | `src/_data/site.json` | Settings → General |
-| Home poster & description | `src/_data/home.json` | Settings → Home page |
-| Venue & getting there | `src/_data/venue.json` | Settings → Venue page |
-| Programme sessions | `src/programme/*.md` | Programme |
-| Participants | `src/participants/*.md` | Participants |
-| Abstracts (placeholder) | `src/abstracts/*.md` | Abstracts |
-| Hotels / dinners / transport | `src/practical/*.md` | Practical info |
+## Project structure
 
-Translatable fields appear twice in the admin (English / Italian).
+```
+server.js            Express app: public routes + admin routes
+lib/
+  store.js           Loads/saves data/content.json (atomic write)
+  schema.js          Field definitions that drive every admin form
+  forms.js           Generic form render + parse
+data/content.json    All site content (the "database")
+views/               Nunjucks templates (public pages + admin)
+public/css/          style.css (site) + admin.css (admin panel)
+public/uploads/      Images uploaded via the admin
+```
+
+## Editing model
+
+- **Pages & settings** (single forms): General information, Home page, Venue page,
+  and **Page texts & labels** (every title, intro and heading, EN/IT).
+- **Lists** (add / edit / delete): Programme sessions, Participants, Abstracts, Practical info.
+
+Translatable fields show an **English** and an **Italian** box side by side.
 
 ## Notes
 
-- The homepage shows an original Bicocca-denim motif until you upload the real **poster**
-  (Settings → Home page → Poster image). The official university logo is intentionally not
-  bundled.
-- UI labels (nav, section headings) live in `src/_data/i18n.json`.
+- The homepage shows an original Bicocca-denim motif until you upload a **poster**
+  (Home page → Poster image), which then replaces it.
+- To reset everything to the starting content, restore `data/content.json` from version control.

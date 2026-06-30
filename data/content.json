@@ -1,0 +1,328 @@
+{
+  "site": {
+    "title": {
+      "en": "Workshop in Harmonic Analysis",
+      "it": "Workshop in Analisi Armonica"
+    },
+    "shortTitle": "Harmonic Analysis @ Bicocca",
+    "dates": {
+      "en": "23–25 September 2026",
+      "it": "23–25 settembre 2026"
+    },
+    "location": {
+      "en": "University of Milano-Bicocca, Milan",
+      "it": "Università di Milano-Bicocca, Milano"
+    },
+    "tagline": {
+      "en": "Three days of talks bringing together researchers in harmonic analysis and related areas.",
+      "it": "Tre giorni di seminari che riuniscono ricercatori in analisi armonica e aree affini."
+    },
+    "contactEmails": [
+      "harmonic.analysis@unimib.it"
+    ],
+    "organizers": [
+      {
+        "name": "Organizer One",
+        "affiliation": "University of Milano-Bicocca"
+      },
+      {
+        "name": "Organizer Two",
+        "affiliation": "University of Milano-Bicocca"
+      }
+    ]
+  },
+  "home": {
+    "poster": "/uploads/1782824168724-ChatGPT_Image_Jun_30__2026__02_55_56_PM.png",
+    "posterAlt": {
+      "en": "Workshop poster",
+      "it": "Locandina del workshop"
+    },
+    "description_en": "The Workshop in Harmonic Analysis at the University of Milano-Bicocca brings together researchers — from PhD students and postdocs to senior faculty — working in harmonic analysis and related areas. Over three days, invited speakers will present recent advances, and participants will have ample time to exchange ideas and foster new collaborations.\r\n\r\nThe workshop is hosted on the Bicocca campus in Milan. Talks, abstracts, the list of participants, and all practical information are available on this site and will be updated as the event approaches.",
+    "description_it": "Il Workshop in Analisi Armonica presso l'Università di Milano-Bicocca riunisce ricercatori — dai dottorandi e postdoc fino ai docenti — che lavorano in analisi armonica e aree affini. Nell'arco di tre giorni, relatori invitati presenteranno i risultati più recenti e i partecipanti avranno ampio spazio per scambiare idee e avviare nuove collaborazioni.\r\n\r\nIl workshop si terrà nel campus Bicocca a Milano. Programma, abstract, elenco dei partecipanti e tutte le informazioni pratiche sono disponibili in questo sito e saranno aggiornati con l'avvicinarsi dell'evento."
+  },
+  "venue": {
+    "venueName": "Department of Mathematics and Applications, University of Milano-Bicocca",
+    "address": "Via Roberto Cozzi 55, 20125 Milano (MI), Italy",
+    "room": {
+      "en": "Building U5, seminar room (to be confirmed)",
+      "it": "Edificio U5, aula seminari (da confermare)"
+    },
+    "mapEmbed": "https://www.openstreetmap.org/export/embed.html?bbox=9.2030%2C45.5180%2C9.2230%2C45.5260&layer=mapnik&marker=45.5220%2C9.2130",
+    "mapLink": "https://www.openstreetmap.org/?mlat=45.5220&mlon=9.2130#map=16/45.5220/9.2130",
+    "gettingThere_en": "The Bicocca campus is well connected to central Milan.\n\n- **By metro + tram:** Line M5 (lilac) to *Bicocca*, then a short walk or one stop by tram 7.\n- **By train:** *Milano Greco Pirelli* (suburban lines S) is a few minutes' walk from the campus.\n- **From the airports:** Malpensa, Linate and Bergamo-Orio al Serio all connect to central Milan, from where the campus is roughly 20–30 minutes by public transport.",
+    "gettingThere_it": "Il campus Bicocca è ben collegato con il centro di Milano.\n\n- **Metro + tram:** Linea M5 (lilla) fino a *Bicocca*, poi una breve passeggiata o una fermata con il tram 7.\n- **Treno:** *Milano Greco Pirelli* (linee suburbane S) è a pochi minuti a piedi dal campus.\n- **Dagli aeroporti:** Malpensa, Linate e Bergamo-Orio al Serio sono tutti collegati con il centro di Milano, da cui il campus dista circa 20–30 minuti con i mezzi pubblici."
+  },
+  "labels": {
+    "nav": {
+      "home": {
+        "en": "Home",
+        "it": "Home"
+      },
+      "programme": {
+        "en": "Programme",
+        "it": "Programma"
+      },
+      "participants": {
+        "en": "Participants",
+        "it": "Partecipanti"
+      },
+      "venue": {
+        "en": "Venue & Info",
+        "it": "Sede e Info"
+      }
+    },
+    "home": {
+      "about": {
+        "en": "About the workshop",
+        "it": "Il workshop"
+      },
+      "organizers": {
+        "en": "Organizers",
+        "it": "Organizzatori"
+      },
+      "contact": {
+        "en": "Contact",
+        "it": "Contatti"
+      }
+    },
+    "programme": {
+      "title": {
+        "en": "Programme",
+        "it": "Programma"
+      },
+      "intro": {
+        "en": "The three-day programme is below. Times and talks may still change.",
+        "it": "Di seguito il programma dei tre giorni. Orari e seminari potrebbero subire variazioni."
+      },
+      "day": {
+        "en": "Day",
+        "it": "Giorno"
+      },
+      "abstracts": {
+        "en": "Abstracts",
+        "it": "Abstract"
+      },
+      "abstractsPlaceholder": {
+        "en": "Abstracts will be added here soon.",
+        "it": "Gli abstract saranno aggiunti qui a breve."
+      },
+      "tba": {
+        "en": "To be announced",
+        "it": "Da annunciare"
+      }
+    },
+    "participants": {
+      "title": {
+        "en": "Participants",
+        "it": "Partecipanti"
+      },
+      "intro": {
+        "en": "The list of participants will be updated as registrations are confirmed.",
+        "it": "L'elenco dei partecipanti sarà aggiornato man mano che le iscrizioni vengono confermate."
+      },
+      "roles": {
+        "speaker": {
+          "en": "Speaker",
+          "it": "Relatore"
+        },
+        "organizer": {
+          "en": "Organizer",
+          "it": "Organizzatore"
+        },
+        "participant": {
+          "en": "Participant",
+          "it": "Partecipante"
+        }
+      },
+      "empty": {
+        "en": "Participants will be listed here soon.",
+        "it": "I partecipanti saranno elencati qui a breve."
+      }
+    },
+    "venue": {
+      "title": {
+        "en": "Venue & Practical Information",
+        "it": "Sede e Informazioni Pratiche"
+      },
+      "where": {
+        "en": "Where",
+        "it": "Dove"
+      },
+      "gettingThere": {
+        "en": "Getting there",
+        "it": "Come arrivare"
+      },
+      "practical": {
+        "en": "Practical information",
+        "it": "Informazioni pratiche"
+      },
+      "openMap": {
+        "en": "Open in map",
+        "it": "Apri nella mappa"
+      },
+      "empty": {
+        "en": "Practical information will be added here soon.",
+        "it": "Le informazioni pratiche saranno aggiunte qui a breve."
+      },
+      "categories": {
+        "hotel": {
+          "en": "Accommodation",
+          "it": "Alloggio"
+        },
+        "dinner": {
+          "en": "Dinners & food",
+          "it": "Cene e ristoranti"
+        },
+        "transport": {
+          "en": "Transport",
+          "it": "Trasporti"
+        },
+        "other": {
+          "en": "Other",
+          "it": "Altro"
+        }
+      }
+    },
+    "footer": {
+      "rights": {
+        "en": "Workshop in Harmonic Analysis — University of Milano-Bicocca",
+        "it": "Workshop in Analisi Armonica — Università di Milano-Bicocca"
+      }
+    }
+  },
+  "programme": [
+    {
+      "id": "p1",
+      "day": 1,
+      "dateLabel": "23 September 2026",
+      "start": "09:30",
+      "end": "10:00",
+      "type": "registration",
+      "speaker": "",
+      "affiliation": "",
+      "title_en": "Registration & Welcome",
+      "title_it": "Registrazione e benvenuto"
+    },
+    {
+      "id": "p2",
+      "day": 1,
+      "dateLabel": "23 September 2026",
+      "start": "10:00",
+      "end": "11:00",
+      "type": "talk",
+      "speaker": "Speaker Name",
+      "affiliation": "University",
+      "title_en": "Opening lecture (title to be announced)",
+      "title_it": "Lezione di apertura (titolo da annunciare)"
+    },
+    {
+      "id": "p3",
+      "day": 1,
+      "dateLabel": "23 September 2026",
+      "start": "11:00",
+      "end": "11:30",
+      "type": "break",
+      "speaker": "",
+      "affiliation": "",
+      "title_en": "Coffee break",
+      "title_it": "Pausa caffè"
+    },
+    {
+      "id": "p4",
+      "day": 2,
+      "dateLabel": "24 September 2026",
+      "start": "09:30",
+      "end": "10:30",
+      "type": "talk",
+      "speaker": "Speaker Name",
+      "affiliation": "University",
+      "title_en": "Invited talk (title to be announced)",
+      "title_it": "Seminario su invito (titolo da annunciare)"
+    },
+    {
+      "id": "p5",
+      "day": 2,
+      "dateLabel": "24 September 2026",
+      "start": "13:00",
+      "end": "14:30",
+      "type": "lunch",
+      "speaker": "",
+      "affiliation": "",
+      "title_en": "Lunch",
+      "title_it": "Pranzo"
+    },
+    {
+      "id": "p6",
+      "day": 3,
+      "dateLabel": "25 September 2026",
+      "start": "09:30",
+      "end": "10:30",
+      "type": "talk",
+      "speaker": "Speaker Name",
+      "affiliation": "University",
+      "title_en": "Invited talk (title to be announced)",
+      "title_it": "Seminario su invito (titolo da annunciare)"
+    },
+    {
+      "id": "p7",
+      "day": 3,
+      "dateLabel": "25 September 2026",
+      "start": "12:30",
+      "end": "13:00",
+      "type": "talk",
+      "speaker": "",
+      "affiliation": "",
+      "title_en": "Closing remarks",
+      "title_it": "Conclusioni"
+    }
+  ],
+  "participants": [
+    {
+      "id": "u1",
+      "name": "Matteo Monti",
+      "affiliation": "University of Milano-Bicocca",
+      "role": "organizer",
+      "url": ""
+    },
+    {
+      "id": "u2",
+      "name": "Speaker Example",
+      "affiliation": "Another University",
+      "role": "speaker",
+      "url": ""
+    }
+  ],
+  "abstracts": [],
+  "practical": [
+    {
+      "id": "x1",
+      "category": "hotel",
+      "order": 1,
+      "title": "Hotels near the campus",
+      "address": "Bicocca / Milano area",
+      "url": "",
+      "body_en": "A list of suggested hotels close to the Bicocca campus will be added here. We recommend booking early, as September is a busy period in Milan.",
+      "body_it": "Qui sarà inserito un elenco di hotel consigliati vicino al campus Bicocca. Consigliamo di prenotare con anticipo, poiché settembre è un periodo molto affollato a Milano."
+    },
+    {
+      "id": "x2",
+      "category": "dinner",
+      "order": 1,
+      "title": "Social dinner",
+      "address": "To be announced",
+      "url": "",
+      "body_en": "Details about the social dinner — date, venue and how to sign up — will be published here closer to the workshop.",
+      "body_it": "I dettagli sulla cena sociale — data, luogo e modalità di iscrizione — saranno pubblicati qui in prossimità del workshop."
+    },
+    {
+      "id": "x3",
+      "category": "transport",
+      "order": 1,
+      "title": "Getting around Milan",
+      "address": "",
+      "url": "https://www.atm.it/en",
+      "body_en": "Milan has an extensive public transport network (metro, tram, bus) run by ATM. A single ticket is valid for 90 minutes; daily and multi-day passes are also available and convenient during the workshop.",
+      "body_it": "Milano dispone di un'ampia rete di trasporto pubblico (metro, tram, autobus) gestita da ATM. Un biglietto singolo è valido 90 minuti; sono disponibili anche abbonamenti giornalieri e plurigiornalieri, comodi durante il workshop."
+    }
+  ]
+}

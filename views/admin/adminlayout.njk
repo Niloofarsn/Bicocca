@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>{{ heading or "Content manager" }} · Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body class="admin">
+    <header class="admin-bar">
+      <div class="admin-bar-inner">
+        <a class="admin-brand" href="/admin">⚙︎ Content manager</a>
+        <div class="admin-bar-right">
+          <a href="/en/" target="_blank">View site ↗</a>
+          <form method="post" action="/admin/logout" class="inline"><button class="link-btn" type="submit">Log out</button></form>
+        </div>
+      </div>
+    </header>
+    <main class="admin-main">
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Admin login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/admin.css" />
+  </head>
+  <body class="admin">
+    <div class="login-wrap">
+      <form class="login-card" method="post" action="/admin/login">
+        <h1>Content manager</h1>
+        <p class="muted">Harmonic Analysis @ Bicocca</p>
+        {% if error %}<p class="form-error">{{ error }}</p>{% endif %}
+        <label>Password
+          <input type="password" name="password" autofocus required />
+        </label>
+        <button class="btn" type="submit">Log in</button>
+        <p class="login-foot"><a href="/en/">← Back to site</a></p>
+      </form>
+    </div>
+  </body>
+</html>

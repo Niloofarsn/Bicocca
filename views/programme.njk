@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+{% block content %}
+<section class="section">
+  <div class="wrap">
+    <h1 class="page-title">{{ L.programme.title | loc(locale) }}</h1>
+    <p class="lede">{{ L.programme.intro | loc(locale) }}</p>
+
+    {% for d in days %}
+      <div class="day-block">
+        <h2 class="day-heading">
+          {{ L.programme.day | loc(locale) }} {{ d.n }}
+          {% if d.sessions.length and d.sessions[0].dateLabel %}<span class="day-date">· {{ d.sessions[0].dateLabel }}</span>{% endif %}
+        </h2>
+        {% if d.sessions.length %}
+          <table class="schedule">
+            <tbody>
+              {% for s in d.sessions %}
+                <tr class="row-{{ s.type or 'talk' }}">
+                  <td class="col-time">{{ s.start }}{% if s.end %}–{{ s.end }}{% endif %}</td>
+                  <td class="col-talk">
+                    {% set tt = s["title_" + locale] or s.title_en %}
+                    <span class="talk-title">{{ tt or (L.programme.tba | loc(locale)) }}</span>
+                    {% if s.speaker %}<span class="talk-speaker">{{ s.speaker }}{% if s.affiliation %} · <span class="muted">{{ s.affiliation }}</span>{% endif %}</span>{% endif %}
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p class="muted">{{ L.programme.tba | loc(locale) }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section section-alt" id="abstracts">
+  <div class="wrap">
+    <h2 class="section-title">{{ L.programme.abstracts | loc(locale) }}</h2>
+    {% if abstracts.length %}
+      <div class="abstracts">
+        {% for a in abstracts %}
+          <article class="abstract">
+            <h3 class="abstract-title">{{ a["title_" + locale] or a.title_en }}</h3>
+            {% if a.speaker %}<p class="abstract-speaker">{{ a.speaker }}{% if a.affiliation %} · <span class="muted">{{ a.affiliation }}</span>{% endif %}</p>{% endif %}
+            <div class="prose">{{ (a["abstract_" + locale] or a.abstract_en) | md | safe }}</div>
+          </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="placeholder">{{ L.programme.abstractsPlaceholder | loc(locale) }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

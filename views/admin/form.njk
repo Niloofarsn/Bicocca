@@ -1,0 +1,21 @@
+{% extends "admin/adminlayout.njk" %}
+{% block content %}
+<div class="admin-page narrow-form">
+  <p class="crumb"><a href="{{ backUrl }}">← Back</a></p>
+  <h1 class="admin-h1">{{ heading }}</h1>
+
+  <form method="post" action="{{ action }}" enctype="multipart/form-data" class="admin-form">
+    {{ fieldsHtml | safe }}
+    <div class="form-actions">
+      <button class="btn" type="submit">Save</button>
+      <a class="btn btn-ghost" href="{{ backUrl }}">Cancel</a>
+    </div>
+  </form>
+
+  {% if deleteAction %}
+    <form method="post" action="{{ deleteAction }}" class="delete-form" onsubmit="return confirm('Delete this item? This cannot be undone.');">
+      <button class="link-btn danger" type="submit">Delete this item</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

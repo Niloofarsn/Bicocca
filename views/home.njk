@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+{% block content %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <p class="eyebrow">{{ site.location | loc(locale) }}</p>
+      <h1 class="hero-title">{{ site.title | loc(locale) }}</h1>
+      <p class="hero-dates">{{ site.dates | loc(locale) }}</p>
+      <p class="hero-tagline">{{ site.tagline | loc(locale) }}</p>
+      <div class="hero-actions">
+        <a class="btn" href="/{{ locale }}/programme/">{{ L.nav.programme | loc(locale) }}</a>
+        <a class="btn btn-ghost" href="/{{ locale }}/venue/">{{ L.nav.venue | loc(locale) }}</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      {% if home.poster %}
+        <img class="poster" src="{{ home.poster }}" alt="{{ home.posterAlt | loc(locale) }}" />
+      {% else %}
+        {% include "partials/motif.njk" %}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <h2 class="section-title">{{ L.home.about | loc(locale) }}</h2>
+    <div class="prose">{{ home["description_" + locale] | md | safe }}</div>
+  </div>
+</section>
+
+<section class="section section-alt">
+  <div class="wrap narrow">
+    <div class="cols">
+      <div>
+        <h2 class="section-title">{{ L.home.organizers | loc(locale) }}</h2>
+        <ul class="plain-list">
+          {% for o in site.organizers %}
+            <li><strong>{{ o.name }}</strong><br /><span class="muted">{{ o.affiliation }}</span></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">{{ L.home.contact | loc(locale) }}</h2>
+        <ul class="plain-list">
+          {% for email in site.contactEmails %}<li><a href="mailto:{{ email }}">{{ email }}</a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

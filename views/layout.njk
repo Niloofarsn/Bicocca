@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ pageTitle or (site.title | loc(locale)) }} · {{ site.shortTitle }}</title>
+    <meta name="description" content="{{ site.tagline | loc(locale) }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    {% set base = "/" + locale + "/" %}
+    {% set otherBase = "/" + otherLocale + "/" %}
+    {% set sub = "" if page == "home" else (page + "/") %}
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="{{ base }}">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-text">{{ site.shortTitle }}</span>
+        </a>
+        <nav class="site-nav" aria-label="Main">
+          <a href="{{ base }}"{% if page == "home" %} aria-current="page"{% endif %}>{{ L.nav.home | loc(locale) }}</a>
+          <a href="{{ base }}programme/"{% if page == "programme" %} aria-current="page"{% endif %}>{{ L.nav.programme | loc(locale) }}</a>
+          <a href="{{ base }}participants/"{% if page == "participants" %} aria-current="page"{% endif %}>{{ L.nav.participants | loc(locale) }}</a>
+          <a href="{{ base }}venue/"{% if page == "venue" %} aria-current="page"{% endif %}>{{ L.nav.venue | loc(locale) }}</a>
+          <a class="nav-admin" href="/admin">{{ "Admin" if locale == "en" else "Amministrazione" }}</a>
+        </nav>
+        <a class="lang-toggle" href="{{ otherBase }}{{ sub }}" hreflang="{{ otherLocale }}">{{ otherLocale | upper }}</a>
+      </div>
+    </header>
+
+    <main id="main">
+      {% block content %}{% endblock %}
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap footer-inner">
+        <p class="footer-title">{{ L.footer.rights | loc(locale) }}</p>
+        <p class="footer-meta">
+          {{ site.dates | loc(locale) }} · {{ site.location | loc(locale) }}
+          {% for email in site.contactEmails %} · <a href="mailto:{{ email }}">{{ email }}</a>{% endfor %}
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
