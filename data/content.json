@@ -32,13 +32,13 @@
     ]
   },
   "home": {
-    "poster": "/uploads/1782824168724-ChatGPT_Image_Jun_30__2026__02_55_56_PM.png",
+    "poster": "/uploads/1782830980452-ChatGPT_Image_Jun_30__2026__04_49_14_PM.png",
     "posterAlt": {
       "en": "Workshop poster",
       "it": "Locandina del workshop"
     },
-    "description_en": "The Workshop in Harmonic Analysis at the University of Milano-Bicocca brings together researchers — from PhD students and postdocs to senior faculty — working in harmonic analysis and related areas. Over three days, invited speakers will present recent advances, and participants will have ample time to exchange ideas and foster new collaborations.\r\n\r\nThe workshop is hosted on the Bicocca campus in Milan. Talks, abstracts, the list of participants, and all practical information are available on this site and will be updated as the event approaches.",
-    "description_it": "Il Workshop in Analisi Armonica presso l'Università di Milano-Bicocca riunisce ricercatori — dai dottorandi e postdoc fino ai docenti — che lavorano in analisi armonica e aree affini. Nell'arco di tre giorni, relatori invitati presenteranno i risultati più recenti e i partecipanti avranno ampio spazio per scambiare idee e avviare nuove collaborazioni.\r\n\r\nIl workshop si terrà nel campus Bicocca a Milano. Programma, abstract, elenco dei partecipanti e tutte le informazioni pratiche sono disponibili in questo sito e saranno aggiornati con l'avvicinarsi dell'evento."
+    "description_en": "The Workshop in Harmonic Analysis at the University of Milano-Bicocca brings together researchers — from PhD students and postdocs to senior faculty — working in harmonic analysis and related areas. Over three days, invited speakers will present recent advances, and participants will have ample time to exchange ideas and foster new collaborations.\n\nThe workshop is hosted on the Bicocca campus in Milan. Talks, abstracts, the list of participants, and all practical information are available on this site and will be updated as the event approaches.",
+    "description_it": "Il Workshop in Analisi Armonica presso l’Università di Milano-Bicocca riunisce ricercatori — dai dottorandi e postdoc fino ai docenti — che lavorano in analisi armonica e aree affini. Nell’arco di tre giorni, relatori invitati presenteranno i risultati più recenti e i partecipanti avranno ampio spazio per scambiare idee e avviare nuove collaborazioni.\n\nIl workshop si terrà nel campus Bicocca a Milano. Programma, abstract, elenco dei partecipanti e tutte le informazioni pratiche sono disponibili in questo sito e saranno aggiornati con l’avvicinarsi dell’evento."
   },
   "venue": {
     "venueName": "Department of Mathematics and Applications, University of Milano-Bicocca",

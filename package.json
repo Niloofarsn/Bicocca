@@ -1,16 +1,20 @@
 {
   "name": "harmonic-analysis-bicocca",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Self-hosted website + admin for the Workshop in Harmonic Analysis at the University of Milano-Bicocca",
   "main": "server.js",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "start": "node server.js",
     "dev": "node --watch server.js"
   },
   "license": "MIT",
   "dependencies": {
+    "@vercel/blob": "^0.27.0",
+    "cookie-session": "^2.1.0",
     "express": "^4.19.2",
-    "express-session": "^1.18.0",
     "markdown-it": "^14.1.0",
     "multer": "^1.4.5-lts.1",
     "nunjucks": "^3.2.4"

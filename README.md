@@ -1,93 +1,89 @@
 # Workshop in Harmonic Analysis — University of Milano-Bicocca
 
-A small **self-hosted** bilingual (English / Italian) website with a built-in,
-password-protected **admin panel**. No Netlify, no GitHub, no external CMS — it's a
-single Node.js (Express) app that renders the pages and lets you edit everything live.
+A bilingual (English / Italian) website with a built-in, password-protected **admin panel**.
+It's a single Node.js (Express) app that renders the pages and lets you edit everything live.
+It runs **for free on Vercel** (using Vercel Blob to store content + photos), and also runs
+locally with plain files — no setup — for editing on your own computer.
 
 ## Pages
 
-- **Home** — poster, dates, brief description, organizers, contact, Bicocca-styled hero.
+- **Home** — photo, dates, brief description, organizers, contact, Bicocca-styled hero.
 - **Programme** — three-day schedule + an **Abstracts** section (placeholder until you add any).
 - **Participants** — speakers / organizers / participants.
 - **Venue & Info** — venue + map, getting there, and practical items (hotels, dinners, transport).
 
 Click **Admin** in the top navigation (or go to `/admin`) to edit any of it.
 
-## Run it
+## Run locally
 
 ```bash
 npm install
 npm start
 ```
 
-Then open:
 - Site:  http://localhost:3000/
-- Admin: http://localhost:3000/admin
+- Admin: http://localhost:3000/admin   (default password `1994`)
 
-**Default admin password:** `1994` → change it (see below).
+Locally, edits save to `data/content.json` and uploads to `public/uploads/`.
 
-Editing in the admin saves instantly to `data/content.json` and shows on the site immediately —
-no rebuild, no redeploy. Uploaded images go to `public/uploads/`.
+## Deploy free on Vercel
+
+1. **Create a Vercel account** at https://vercel.com → "Continue with GitHub".
+2. **Add New… → Project**, import the GitHub repo (`Niloofarsn/Bicocca`).
+   Vercel reads `vercel.json` automatically — just click **Deploy**.
+3. **Add a Blob store** (this is what makes saving persist):
+   *Project → Storage → Create → Blob → Connect.*
+   Vercel automatically adds the `BLOB_READ_WRITE_TOKEN` environment variable.
+4. **Set your admin login** under *Project → Settings → Environment Variables*:
+   - `ADMIN_PASSWORD` = a strong password
+   - `SESSION_SECRET` = any long random string
+5. **Redeploy** (*Deployments → ⋯ → Redeploy*) so the new variables take effect.
+
+You'll get a public URL like `https://bicocca.vercel.app` — that's the link you share.
+Log in at `/admin`, and every edit is saved to Blob and shown on the site.
+
+> The first content load creates `content.json` in Blob from the bundled starting content.
+> After that, all edits and uploaded photos live in Blob and persist across deployments.
 
 ## Configuration (environment variables)
 
 | Variable | Purpose | Default |
 |----------|---------|---------|
-| `ADMIN_PASSWORD` | The single admin login password | `1994` |
+| `ADMIN_PASSWORD` | The single admin login password | `1994` (change in production!) |
 | `SESSION_SECRET` | Secret used to sign the login session cookie | `change-me-please` |
-| `PORT` | Port to listen on | `3000` |
+| `BLOB_READ_WRITE_TOKEN` | Set automatically when you connect a Vercel Blob store | — |
+| `PORT` | Local port | `3000` |
 
-Example:
-
-```bash
-ADMIN_PASSWORD='choose-a-strong-one' SESSION_SECRET='some-long-random-string' npm start
-```
-
-## Deploy (any host that runs Node)
-
-Because this is a normal Node server, it runs on a university server or any Node host
-(Render, Railway, Fly.io, a VPS, etc.). General steps:
-
-1. Copy the project to the server (or connect the host to a git repo if you have one).
-2. Set the env vars above — **always set a real `ADMIN_PASSWORD` and `SESSION_SECRET`** in production.
-3. `npm install --omit=dev` then `npm start` (ideally under a process manager like `pm2`,
-   or the platform's own "Web Service" start command `node server.js`).
-4. Put it behind HTTPS (the host usually provides this automatically).
-
-### Example: Render
-- New → **Web Service** → point it at the code.
-- Build command: `npm install`   ·   Start command: `node server.js`
-- Add environment variables `ADMIN_PASSWORD` and `SESSION_SECRET`.
-
-> **Persistence note:** content lives in `data/content.json` and uploads in `public/uploads/`.
-> On hosts with an *ephemeral* filesystem (e.g. Render's free tier resets on redeploy),
-> attach a **persistent disk** mounted at the project folder (or at least at `data/` and
-> `public/uploads/`) so edits survive restarts. On a university server or VPS this is automatic.
+If `BLOB_READ_WRITE_TOKEN` is present (on Vercel) the app uses Blob storage; otherwise it
+uses local files (your computer).
 
 ## Project structure
 
 ```
-server.js            Express app: public routes + admin routes
+server.js            Express app (exported for Vercel, listens locally)
+api/index.js         Vercel serverless entry (imports the app)
+vercel.json          Routes all requests to the app; bundles views/public/data
 lib/
-  store.js           Loads/saves data/content.json (atomic write)
+  store.js           Loads/saves content (Vercel Blob or local file)
+  uploads.js         Saves images (Vercel Blob or public/uploads)
   schema.js          Field definitions that drive every admin form
   forms.js           Generic form render + parse
-data/content.json    All site content (the "database")
+data/content.json    Starting content (seed) + local data store
 views/               Nunjucks templates (public pages + admin)
 public/css/          style.css (site) + admin.css (admin panel)
-public/uploads/      Images uploaded via the admin
 ```
 
 ## Editing model
 
-- **Pages & settings** (single forms): General information, Home page, Venue page,
-  and **Page texts & labels** (every title, intro and heading, EN/IT).
-- **Lists** (add / edit / delete): Programme sessions, Participants, Abstracts, Practical info.
+- **Pages & settings:** Home page (incl. the changeable photo), Venue page, and
+  **Page texts & labels** (every title, intro and heading, EN/IT).
+- **Lists:** Programme sessions, Participants, Abstracts, Practical info — add / edit / delete.
 
 Translatable fields show an **English** and an **Italian** box side by side.
 
 ## Notes
 
-- The homepage shows an original Bicocca-denim motif until you upload a **poster**
-  (Home page → Poster image), which then replaces it.
-- To reset everything to the starting content, restore `data/content.json` from version control.
+- The homepage shows an original Bicocca-denim motif until you upload a **photo**
+  (Home page → Homepage photo), which then replaces it. A checkbox removes it again.
+- On Vercel's free tier the site may take a few seconds to "wake up" on the first visit
+  after a long idle period, then it's fast.
