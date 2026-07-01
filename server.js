@@ -48,7 +48,7 @@ app.use(
 );
 
 // Images are held in memory, then handed to saveUpload (Blob or disk).
-const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 8 * 1024 * 1024 } });
+const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: 25 * 1024 * 1024 } });
 
 async function handleUploads(req) {
   const out = [];
@@ -130,7 +130,7 @@ app.get("/admin/edit/:key", requireAuth, ah(async (req, res) => {
   const data = await store.load();
   const target = def.root ? data : data[def.key];
   const fieldsHtml = def.fields.map((f) => renderField(f, target)).join("\n");
-  res.render("admin/form.njk", { heading: def.label, action: `/admin/edit/${def.key}`, fieldsHtml, deleteAction: null, backUrl: "/admin" });
+  res.render("admin/form.njk", { heading: def.label, action: `/admin/edit/${def.key}`, fieldsHtml, deleteAction: null, backUrl: "/admin", saved: req.query.saved === "1" });
 }));
 
 app.post("/admin/edit/:key", requireAuth, upload.any(), ah(async (req, res) => {

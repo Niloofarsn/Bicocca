@@ -145,6 +145,9 @@ a:hover { text-decoration: underline; }
 .abstract { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; }
 .abstract-title { font-family: var(--serif); font-weight: 500; margin: 0 0 4px; }
 .abstract-speaker { color: var(--muted); margin: 0 0 12px; font-size: 0.95rem; }
+.abstract-pdf { margin: 12px 0 0; }
+.abstract-pdf a { display: inline-block; background: var(--bicocca-light); color: var(--bicocca-deep); padding: 6px 14px; border-radius: 999px; font-size: 0.9rem; font-weight: 600; }
+.abstract-pdf a:hover { background: var(--bicocca); color: #fff; text-decoration: none; }
 
 /* ---------- Participants ---------- */
 .people { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }

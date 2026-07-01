@@ -54,6 +54,9 @@ body.admin { background: var(--paper-alt); }
 .delete-form { margin-top: 26px; border-top: 1px solid var(--line); padding-top: 18px; }
 .link-btn.danger { color: #b3261e; }
 .form-error { background: #fde8e6; color: #b3261e; border-radius: 8px; padding: 9px 12px; font-size: 0.9rem; }
+.saved-banner { background: #e7f5ec; color: #1a7a3d; border: 1px solid #bfe3cd; border-radius: 8px; padding: 10px 14px; font-size: 0.92rem; margin: 0 0 18px; }
+.file-current { margin-bottom: 8px; }
+.file-current a { font-size: 0.92rem; }
 
 /* Login */
 .login-wrap { min-height: 80vh; display: flex; align-items: center; justify-content: center; padding: 24px; }

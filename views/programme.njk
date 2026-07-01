@@ -44,6 +44,7 @@
             <h3 class="abstract-title">{{ a["title_" + locale] or a.title_en }}</h3>
             {% if a.speaker %}<p class="abstract-speaker">{{ a.speaker }}{% if a.affiliation %} · <span class="muted">{{ a.affiliation }}</span>{% endif %}</p>{% endif %}
             <div class="prose">{{ (a["abstract_" + locale] or a.abstract_en) | md | safe }}</div>
+            {% if a.pdf %}<p class="abstract-pdf"><a href="{{ a.pdf }}" target="_blank" rel="noopener">{{ "Download PDF" if locale == "en" else "Scarica il PDF" }} ↓</a></p>{% endif %}
           </article>
         {% endfor %}
       </div>
