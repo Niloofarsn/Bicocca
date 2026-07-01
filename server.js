@@ -68,21 +68,23 @@ function publicCtx(locale, data, extra) {
 
 // Diagnostic: confirms which storage the running deployment is using.
 app.get("/healthz", ah(async (req, res) => {
-  const hasBlob = !!process.env.BLOB_READ_WRITE_TOKEN;
+  const blobenv = require("./lib/blobenv");
+  const hasBlob = blobenv.useBlob();
   let read = "ok";
-  let write = "unknown";
   try {
     await store.load();
   } catch (e) {
     read = "error: " + e.message;
   }
+  res.set("Cache-Control", "no-store");
   res.json({
     storage: hasBlob ? "blob" : "file",
     hasBlobToken: hasBlob,
+    blobEnvKeys: blobenv.blobEnvKeys(), // variable NAMES only (no secrets)
     onVercel: !!process.env.VERCEL,
+    vercelEnv: process.env.VERCEL_ENV || null,
     node: process.version,
     read,
-    write,
   });
 }));
 
