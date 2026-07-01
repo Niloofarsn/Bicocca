@@ -70,6 +70,10 @@ function publicCtx(locale, data, extra) {
 app.get("/healthz", ah(async (req, res) => {
   const blobenv = require("./lib/blobenv");
   const hasBlob = blobenv.useBlob();
+  const tok = blobenv.token();
+  // Store id is embedded in the token as vercel_blob_rw_<STOREID>_<secret>.
+  // The store id is not a secret (it's shown in the dashboard), so it's safe.
+  const tokenStore = tok ? String(tok).split("_")[3] || null : null;
   let read = "ok";
   try {
     await store.load();
@@ -80,6 +84,7 @@ app.get("/healthz", ah(async (req, res) => {
   res.json({
     storage: hasBlob ? "blob" : "file",
     hasBlobToken: hasBlob,
+    tokenStore, // which store the live token points at
     blobEnvKeys: blobenv.blobEnvKeys(), // variable NAMES only (no secrets)
     onVercel: !!process.env.VERCEL,
     vercelEnv: process.env.VERCEL_ENV || null,
