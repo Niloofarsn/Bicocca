@@ -95,23 +95,6 @@ app.get("/healthz", ah(async (req, res) => {
   });
 }));
 
-// Diagnostic: runs the real load+save path and reports any error verbatim.
-app.get("/healthz/write", ah(async (req, res) => {
-  res.set("Cache-Control", "no-store");
-  try {
-    const data = await store.load();
-    await store.save(data);
-    res.json({ ok: true });
-  } catch (e) {
-    res.json({
-      ok: false,
-      error: String((e && e.message) || e),
-      name: e && e.name,
-      stack: ((e && e.stack) || "").split("\n").slice(0, 5),
-    });
-  }
-}));
-
 // ================= PUBLIC SITE =================
 app.get("/", (req, res) => res.redirect("/en/"));
 
