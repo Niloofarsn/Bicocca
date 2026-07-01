@@ -83,8 +83,10 @@ app.get("/healthz", ah(async (req, res) => {
   res.set("Cache-Control", "no-store");
   res.json({
     storage: hasBlob ? "blob" : "file",
-    hasBlobToken: hasBlob,
-    tokenStore, // which store the live token points at
+    hasBlobToken: !!blobenv.token(),
+    hasStoreBinding: !!blobenv.storeId(),
+    authMode: blobenv.token() ? "token" : (blobenv.storeId() ? "auto (platform)" : "none"),
+    tokenStore, // which store the live token points at (if any)
     blobEnvKeys: blobenv.blobEnvKeys(), // variable NAMES only (no secrets)
     onVercel: !!process.env.VERCEL,
     vercelEnv: process.env.VERCEL_ENV || null,
