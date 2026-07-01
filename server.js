@@ -66,6 +66,26 @@ function publicCtx(locale, data, extra) {
   return Object.assign({ locale, otherLocale, site: data.site, L: data.labels }, extra);
 }
 
+// Diagnostic: confirms which storage the running deployment is using.
+app.get("/healthz", ah(async (req, res) => {
+  const hasBlob = !!process.env.BLOB_READ_WRITE_TOKEN;
+  let read = "ok";
+  let write = "unknown";
+  try {
+    await store.load();
+  } catch (e) {
+    read = "error: " + e.message;
+  }
+  res.json({
+    storage: hasBlob ? "blob" : "file",
+    hasBlobToken: hasBlob,
+    onVercel: !!process.env.VERCEL,
+    node: process.version,
+    read,
+    write,
+  });
+}));
+
 // ================= PUBLIC SITE =================
 app.get("/", (req, res) => res.redirect("/en/"));
 
