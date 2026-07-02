@@ -28,18 +28,20 @@
   <div class="wrap">
     <h2 class="section-title">{{ L.venue.practical | loc(locale) }}</h2>
     {% if cats.length %}
-      {% for c in cats %}
-        <h3 class="practical-cat">{{ L.venue.categories[c.key] | loc(locale) }}</h3>
-        <div class="cards">
-          {% for it in c.items %}
-            <article class="card">
-              <h4 class="card-title">{% if it.url %}<a href="{{ it.url }}">{{ it.title }}</a>{% else %}{{ it.title }}{% endif %}</h4>
-              {% if it.address %}<p class="muted card-address">{{ it.address }}</p>{% endif %}
-              <div class="prose">{{ (it["body_" + locale] or it.body_en) | md | safe }}</div>
-            </article>
-          {% endfor %}
-        </div>
-      {% endfor %}
+      <div class="practical-grid">
+        {% for c in cats %}
+          <div class="practical-col">
+            <h3 class="practical-cat">{{ L.venue.categories[c.key] | loc(locale) }}</h3>
+            {% for it in c.items %}
+              <article class="card">
+                <h4 class="card-title">{% if it.url %}<a href="{{ it.url }}">{{ it.title }}</a>{% else %}{{ it.title }}{% endif %}</h4>
+                {% if it.address %}<p class="muted card-address">{{ it.address }}</p>{% endif %}
+                <div class="prose">{{ (it["body_" + locale] or it.body_en) | md | safe }}</div>
+              </article>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
     {% else %}
       <p class="placeholder">{{ L.venue.empty | loc(locale) }}</p>
     {% endif %}

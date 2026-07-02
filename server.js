@@ -116,7 +116,13 @@ app.get("/:locale(en|it)/programme/", ah(async (req, res) => {
 
 app.get("/:locale(en|it)/participants/", ah(async (req, res) => {
   const data = await store.load();
-  const people = [...data.participants].sort((a, b) => String(a.name || "").localeCompare(String(b.name || "")));
+  // Sort alphabetically by surname; fall back to the last word of the name
+  // for older entries that only have a full name.
+  const sortKey = (p) =>
+    String(p.surname || String(p.name || "").trim().split(/\s+/).pop() || "").toLowerCase();
+  const people = [...data.participants].sort(
+    (a, b) => sortKey(a).localeCompare(sortKey(b)) || String(a.name || "").localeCompare(String(b.name || ""))
+  );
   res.render("participants.njk", publicCtx(req.params.locale, data, { page: "participants", people }));
 }));
 

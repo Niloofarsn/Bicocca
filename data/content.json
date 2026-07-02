@@ -29,7 +29,8 @@
         "name": "Organizer Two",
         "affiliation": "University of Milano-Bicocca"
       }
-    ]
+    ],
+    "registrationUrl": "https://docs.google.com/forms/d/e/1FAIpQLScdsSPeeiCp6MgxVs5MiDi2YUPuP314IEVtjySBv8BffchIMg/viewform"
   },
   "home": {
     "poster": "/uploads/1782830980452-ChatGPT_Image_Jun_30__2026__04_49_14_PM.png",
@@ -69,6 +70,10 @@
       "venue": {
         "en": "Venue & Info",
         "it": "Sede e Info"
+      },
+      "registration": {
+        "en": "Registration",
+        "it": "Registrazione"
       }
     },
     "home": {
@@ -279,17 +284,19 @@
   "participants": [
     {
       "id": "u1",
-      "name": "Matteo Monti",
+      "name": "Matteo",
       "affiliation": "University of Milano-Bicocca",
       "role": "organizer",
-      "url": ""
+      "url": "",
+      "surname": "Monti"
     },
     {
       "id": "u2",
-      "name": "Speaker Example",
+      "name": "Speaker",
       "affiliation": "Another University",
       "role": "speaker",
-      "url": ""
+      "url": "",
+      "surname": "Example"
     }
   ],
   "abstracts": [],

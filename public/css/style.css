@@ -85,7 +85,7 @@ a:hover { text-decoration: underline; }
 }
 .hero-title {
   font-family: var(--serif); font-weight: 500; line-height: 1.08;
-  font-size: clamp(2.1rem, 4.6vw, 3.5rem); margin: 0 0 16px; letter-spacing: -0.5px;
+  font-size: clamp(1.8rem, 3.8vw, 2.9rem); margin: 0 0 16px; letter-spacing: -0.5px;
 }
 .hero-dates { font-size: 1.2rem; font-weight: 600; color: var(--bicocca-deep); margin: 0 0 14px; }
 .hero-tagline { color: var(--muted); font-size: 1.08rem; max-width: 46ch; margin: 0 0 28px; }
@@ -162,8 +162,12 @@ a:hover { text-decoration: underline; }
 .venue-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; margin-bottom: 16px; }
 .venue-name { font-weight: 600; margin: 0 0 4px; }
 .venue-map iframe { width: 100%; height: 280px; border: 1px solid var(--line); border-radius: var(--radius); }
-.practical-cat { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; margin: 32px 0 14px; }
+.practical-cat { font-family: var(--serif); font-weight: 500; font-size: 1.2rem; margin: 0 0 14px; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+/* The practical-info categories sit side by side (in a row), collapsing on mobile. */
+.practical-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; align-items: start; }
+.practical-col { display: flex; flex-direction: column; gap: 14px; }
+.practical-col .card { height: 100%; }
 .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px; }
 .card-title { font-family: var(--serif); font-weight: 500; margin: 0 0 4px; }
 .card-address { font-size: 0.9rem; margin: 0 0 10px; }

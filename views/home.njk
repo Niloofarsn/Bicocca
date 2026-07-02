@@ -9,7 +9,9 @@
       <p class="hero-tagline">{{ site.tagline | loc(locale) }}</p>
       <div class="hero-actions">
         <a class="btn" href="/{{ locale }}/programme/">{{ L.nav.programme | loc(locale) }}</a>
-        <a class="btn btn-ghost" href="/{{ locale }}/venue/">{{ L.nav.venue | loc(locale) }}</a>
+        {% if site.registrationUrl %}
+          <a class="btn btn-ghost" href="{{ site.registrationUrl }}" target="_blank" rel="noopener">{{ L.nav.registration | loc(locale) }}</a>
+        {% endif %}
       </div>
     </div>
     <div class="hero-visual">
