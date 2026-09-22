@@ -5,16 +5,23 @@
     <h1 class="page-title">{{ L.participants.title | loc(locale) }}</h1>
     <p class="lede">{{ L.participants.intro | loc(locale) }}</p>
     {% if people.length %}
-      <ul class="people">
-        {% for p in people %}
-          <li class="person">
-            {% set fullname = p.name + (" " + p.surname if p.surname else "") %}
-            <div class="person-name">{% if p.url %}<a href="{{ p.url }}">{{ fullname }}</a>{% else %}{{ fullname }}{% endif %}</div>
-            {% if p.affiliation %}<div class="person-aff muted">{{ p.affiliation }}</div>{% endif %}
-            {% if p.role %}<span class="tag tag-{{ p.role }}">{{ L.participants.roles[p.role] | loc(locale) }}</span>{% endif %}
-          </li>
+      <div class="people-index">
+        {% for g in groups %}
+          <section class="people-group">
+            <h2 class="people-letter">{{ g.letter }}</h2>
+            <ul class="people-list">
+              {% for p in g.people %}
+                <li class="person">
+                  {% set fullname = p.name + (" " + p.surname if p.surname else "") %}
+                  <span class="person-name">{% if p.url %}<a href="{{ p.url }}">{{ fullname }}</a>{% else %}{{ fullname }}{% endif %}</span>
+                  <span class="person-aff muted">{{ p.affiliation }}</span>
+                  <span class="person-role">{% if p.role %}<span class="tag tag-{{ p.role }}">{{ L.participants.roles[p.role] | loc(locale) }}</span>{% endif %}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
         {% endfor %}
-      </ul>
+      </div>
     {% else %}
       <p class="placeholder">{{ L.participants.empty | loc(locale) }}</p>
     {% endif %}

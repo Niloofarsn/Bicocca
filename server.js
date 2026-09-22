@@ -31,7 +31,28 @@ env.addFilter("loc", (v, locale) => {
   if (typeof v === "object") return v[locale] || v.en || "";
   return v;
 });
-env.addFilter("md", (s) => (s ? md.render(String(s)) : ""));
+// A paragraph that opens with a short "Label:" line (e.g. "Confirmed speakers:")
+// gets that line rendered as a styled label. If every line after it looks like
+// "<b>Name</b> (Affiliation)", those lines become a two-column name/affiliation list.
+const PERSON_LINE = /^\s*<(b|strong)>([\s\S]*?)<\/\1>\s*\(([\s\S]*)\)\s*,?\s*$/;
+function labeledBlock(_, label, body) {
+  const lines = body.split(/<br>\n?/).filter((l) => l.trim());
+  const people = lines.map((l) => l.match(PERSON_LINE));
+  if (!people.length || people.some((m) => !m)) {
+    return `<p class="labeled"><span class="list-label">${label}</span>${body}</p>`;
+  }
+  const rows = people
+    .map((m) => `<div class="people-row"><span class="people-name">${m[2]}</span><span class="people-aff">${m[3]}</span></div>`)
+    .join("\n");
+  return `<div class="labeled"><span class="list-label">${label}</span><div class="people-table">\n${rows}\n</div></div>`;
+}
+env.addFilter("md", (s) =>
+  s
+    ? md
+        .render(String(s))
+        .replace(/<p>([^<\n]{1,60}:)<br>\n?([\s\S]*?)<\/p>/g, labeledBlock)
+    : ""
+);
 
 // ---------- Middleware ----------
 app.use(express.urlencoded({ extended: true }));
@@ -123,7 +144,14 @@ app.get("/:locale(en|it)/participants/", ah(async (req, res) => {
   const people = [...data.participants].sort(
     (a, b) => sortKey(a).localeCompare(sortKey(b)) || String(a.name || "").localeCompare(String(b.name || ""))
   );
-  res.render("participants.njk", publicCtx(req.params.locale, data, { page: "participants", people }));
+  // Group under the surname's first letter (accents stripped, so "É" files under "E").
+  const groups = [];
+  for (const p of people) {
+    const letter = sortKey(p).normalize("NFD").replace(/[\u0300-\u036f]/g, "").charAt(0).toUpperCase() || "#";
+    if (!groups.length || groups[groups.length - 1].letter !== letter) groups.push({ letter, people: [] });
+    groups[groups.length - 1].people.push(p);
+  }
+  res.render("participants.njk", publicCtx(req.params.locale, data, { page: "participants", people, groups }));
 }));
 
 app.get("/:locale(en|it)/venue/", ah(async (req, res) => {
