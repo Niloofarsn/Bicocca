@@ -48,12 +48,9 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--line);
 }
 .header-inner { display: flex; align-items: center; gap: 20px; min-height: 66px; }
-.brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--ink); }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--ink); }
 .brand:hover { text-decoration: none; }
-.brand-mark {
-  width: 18px; height: 18px; border-radius: 4px;
-  background: linear-gradient(135deg, var(--bicocca), var(--bicocca-deep));
-}
+.brand-logo { height: 46px; width: auto; display: block; }
 .brand-text { font-family: var(--serif); font-size: 1.05rem; letter-spacing: 0.2px; }
 
 .site-nav { margin-left: auto; display: flex; gap: 22px; flex-wrap: wrap; }
@@ -74,11 +71,7 @@ a:hover { text-decoration: underline; }
 .lang-toggle:hover { border-color: var(--bicocca); color: var(--bicocca); text-decoration: none; }
 
 /* ---------- Hero ---------- */
-.hero { position: relative; background: linear-gradient(180deg, var(--paper-alt), var(--paper)); border-bottom: 1px solid var(--line); }
-.hero-logo { position: absolute; top: 18px; left: 24px; width: 64px; height: auto; }
-.hero .hero-grid { padding-top: 104px; }
-@media (max-width: 820px) { .hero .hero-grid { padding-top: 96px; } }
-@media (max-width: 560px) { .hero-logo { width: 52px; top: 16px; left: 16px; } .hero .hero-grid { padding-top: 84px; } }
+.hero { background: linear-gradient(180deg, var(--paper-alt), var(--paper)); border-bottom: 1px solid var(--line); }
 .hero-grid {
   display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 48px;
   align-items: center; padding: 72px 24px;
