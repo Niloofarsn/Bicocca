@@ -4,7 +4,7 @@
   "description": "Self-hosted website + admin for the Workshop in Harmonic Analysis at the University of Milano-Bicocca",
   "main": "server.js",
   "engines": {
-    "node": "20.x"
+    "node": "24.x"
   },
   "scripts": {
     "start": "node server.js",
